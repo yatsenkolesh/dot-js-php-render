@@ -5,7 +5,7 @@
   * @version 0.0.1
 */
 
-class Kohana_doT
+class doT
 {
 
   protected $templateContents = null;
