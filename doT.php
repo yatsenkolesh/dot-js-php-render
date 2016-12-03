@@ -144,10 +144,10 @@ class doT
     if(sizeof($assigns))
       $this->assign($assigns);
 
-    if(!$this->getTemplatePartByScriptId($FindID))
+    if($FindID && !$this->getTemplatePartByScriptId($FindID))
       throw new Exception('Failed to parse template: id '. $FindID.' is not find');
 
-    return strtr($this->getTemplatePartByScriptId($FindID), $this->getPrepareAssigns());
+    return strtr(($FindID ? $this->getTemplatePartByScriptId($FindID) : $this->templateContents), $this->getPrepareAssigns());
   }
 
 }
