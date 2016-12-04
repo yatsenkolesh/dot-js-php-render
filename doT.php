@@ -47,7 +47,7 @@ class doT
 
   function __construct($template = null, $isFile = 0,array $settings = [])
   {
-    $this->settings = array_merge($settings, $this->settings);
+    $this->settings = $settings + $this->settings;
 
     if($template && !$isFile)
       return $this->templateContents = $template;
@@ -128,6 +128,7 @@ class doT
 
   function getTemplatePartByScriptId($ID = null)
   {
+    // @TODO: make cache for next
     preg_match(str_replace('%ID%', $ID, $this->settings['findIdRegex']), $this->templateContents, $match);
     return isset($match[$this->settings['regexResultId']]) ? $match[$this->settings['regexResultId']] : FALSE;
   }
