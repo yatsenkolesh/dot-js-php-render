@@ -17,7 +17,8 @@ class doT
     'getdoTValueTemplate' => '{{=%s}}',
     'isCacheContents' => 1,
     'findIdRegex' => '/id\=("|\')%ID%("|\')(.*)\>(.*)\<\/script\>/Uims',
-    'regexResultId' => 4
+    'regexResultId' => 4,
+    'templatesIsHandleByPHP' => 1
   ];
 
 
@@ -53,7 +54,7 @@ class doT
       return $this->templateContents = $template;
 
     if($isFile && file_exists($template))
-      return $this->loadTemplate($template);
+      return $this->loadTemplate($template, $this->settings['templatesIsHandleByPHP']);
 
     if($isFile)
       throw new Exception('File '.$template.' is not exists');
@@ -68,12 +69,13 @@ class doT
 
   /**
     * @param string $templatePath path of template
+    * @param boolean $isHandlePHP if set to true code in template will be execute
     * @return object $this
   */
 
   public
 
-  function loadTemplate($templatePath = null)
+  function loadTemplate($templatePath = null, $isHandlePHP = 0)
   {
     if($this->settings['isCacheContents'] && isset(self::$cacheContents[$templatePath]))
       return $this->templateContents = self::$cacheContents[$templatePath];
@@ -81,10 +83,19 @@ class doT
     if(!file_exists($templatePath) || !is_readable($templatePath))
       throw new Exception('Path to template '. $templatePath.' is not exist or not readable');
 
+    if($isHandlePHP)
+    {
+      ob_start();
+        require $templatePath;
+      $this->templateContents = ob_get_clean();
+      return $this;
+    }
+
     $this->templateContents = file_get_contents($templatePath);
 
     return $this;
   }
+
 
   /**
     * @param array $assigns
