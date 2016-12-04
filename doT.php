@@ -87,7 +87,8 @@ class doT
     {
       ob_start();
         require $templatePath;
-      $this->templateContents = ob_get_clean();
+      $this->templateContents = ob_get_contents();
+      ob_end_clean();
       return $this;
     }
 
