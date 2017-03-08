@@ -1,7 +1,8 @@
 <?php
 
 /**
-  * @author https://github.com/webfay
+  * @author Alex Yatsenko
+  * @link https://github.com/webfay
   * @version 0.0.1
 */
 
@@ -11,7 +12,8 @@ class doT
   protected $templateContents = null;
   protected $assigns = [];
 
-  public $settings = [
+  public $settings =
+  [
     'jsPropertyName' => 'it',
     'jsPropertyCall' => '.',
     'getdoTValueTemplate' => '{{=%s}}',
@@ -42,6 +44,7 @@ class doT
     * @param string $template path to template or contents
     * @param boolean $isFile  $template is path to template file
     * @param array $setinngs
+    * @throws Exception if file on following is not found
   */
 
   public
@@ -65,6 +68,7 @@ class doT
   function __set($key, $value)
   {
     $this->assigns[$key] = $value;
+    return null;
   }
 
   /**
