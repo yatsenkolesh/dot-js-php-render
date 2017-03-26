@@ -8,10 +8,19 @@
 
 class doT
 {
-
+ 
+  /**
+   * @var string $templateContents
+  */
   protected $templateContents = null;
+  /**
+    * @var array $assings
+  */
   protected $assigns = [];
-
+ 
+  /**
+    * @var array $settings
+  */
   public $settings =
   [
     'jsPropertyName' => 'it',
@@ -23,7 +32,9 @@ class doT
     'templatesIsHandleByPHP' => 1
   ];
 
-
+  /**
+    * @var array $cacheContents
+  */
   public static $cacheContents = [];
 
   /**
