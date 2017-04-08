@@ -6,7 +6,7 @@
 #### Use example:
 
 ```php
-$doT = doT::instance(DOCROOT.'/modules/Work/views/PR/Products/doT/option-content.php', 1); // or first code of template in first arg
+$doT = doT\doT::instance(DOCROOT.'/modules/Work/views/PR/Products/doT/option-content.php', 1); // or first code of template in first arg
 $doT -> assign([
  'id' => 2,
  'options' => 'options-list'
