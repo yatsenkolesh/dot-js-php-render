@@ -1,6 +1,7 @@
 <?php
 
 /**
+  * @license BSD-3-Clause
   * @author Alex Yatsenko
   * @link https://github.com/webfay
   * @version 0.0.1
