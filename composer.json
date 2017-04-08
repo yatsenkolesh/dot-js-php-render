@@ -1,0 +1,14 @@
+{
+    "name": "yatsenkolesh/dot-js-php-render",
+    "description": "doT js templates render for php Edit",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "webfay",
+            "email": "webfay1@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
